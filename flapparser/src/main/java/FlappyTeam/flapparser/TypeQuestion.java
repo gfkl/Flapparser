@@ -3,6 +3,6 @@ package FlappyTeam.flapparser;
 public enum TypeQuestion {
 	simple,
 	multiple,
-	questions,
+	bool,
 	gapfil;
 }

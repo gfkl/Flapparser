@@ -77,7 +77,7 @@ public class Parser {
 		if(typeStr.equals("type=\"()\"")){
 			/*Expression pour differencier le type de question*/
 			if(rep.matches("(\\s*[+-]\\s*(true|false|TRUE|FALSE).\\s*)*")){
-				q.setType(TypeQuestion.questions);
+				q.setType(TypeQuestion.bool);
 				//q.setListeRep(parserGuillaume(rep));
 				System.out.println("Parser Guillaume");
 			}else{
