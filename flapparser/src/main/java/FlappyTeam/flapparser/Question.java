@@ -3,9 +3,9 @@ package FlappyTeam.flapparser;
 import java.util.ArrayList;
 
 public class Question {
-	String question;
-	TypeQuestion type;
-	ArrayList<Reponse> listeRep;
+	private String question;
+	private TypeQuestion type;
+	private ArrayList<Reponse> listeRep;
 
 	public Question(String question, TypeQuestion type) {
 		super();

@@ -1,19 +1,38 @@
 package FlappyTeam.flapparser;
-import javax.lang.model.element.TypeParameterElement;
 
 public class Parser {
+	private	Question	question;	
+	private String 		questionType;
+	private String		response;
+	private	String		strToParse;
 
-	public static void main(String[] args) {
-		//String parse ="{type=\"{}\" }| il y a des reponses la";
-		String parse ="{La Suisse est la suisse. |type=\"[]\"} + TRUE. - FALSE.";
-		Question q;
-		q = parser(parse);
-		if(q == null)
-			System.out.println("Erreur dans la chaine de charactere");
-		else
-			System.out.println("Chaine parser");
+	public	Parser(String strToParse) {
+		
+		this.question = new Question();
+		this.questionType = null;
+		this.response = null;
+		this.strToParse = strToParse;
+	}
+	
+	public void setStrToParse(String strToParse) {
+		this.strToParse = strToParse;
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+
+	public String getQuestionType() {
+		return questionType;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public String getStrToParse() {
+		return strToParse;
+	}
 
 	/**
 	 *@author Houpert
@@ -22,45 +41,40 @@ public class Parser {
 	 *
 	 *@return la chaine parser
 	 **/
-	public static Question parser(String parseStr) {
-		Question q = new Question();
-		String typeStr = null, rep = null;
+	public Question	doParser() {
 		int value = 0, temp = 0;
 
-		if(parseStr.indexOf("|") != -1 && parseStr.indexOf("{") != -1 && parseStr.indexOf("{") == 0 ){
-			q.setQuestion(parseStr.substring(1,parseStr.indexOf("|")));
-			value = parseStr.indexOf("|")+1;
+		if(this.strToParse.indexOf("|") != -1 && this.strToParse.indexOf("{") != -1 && this.strToParse.indexOf("{") == 0 ){
+			this.question.setQuestion(this.strToParse.substring(1, this.strToParse.indexOf("|")));
+			value = this.strToParse.indexOf("|")+1;
 		}else
 			return null;
-
-		if(parseStr.indexOf("}") != -1){
-			temp = parseStr.indexOf("}");
-
+		if(this.strToParse.indexOf("}") != -1){
+			temp = this.strToParse.indexOf("}");
 			/*Si de type '}' on prend le 2nd '}'*/
-			if(parseStr.charAt(temp) == parseStr.charAt(temp+2)){	
-				typeStr = parseStr.substring(value,parseStr.indexOf("}")+2);
-				value = parseStr.indexOf("}")+3;
+			if(this.strToParse.charAt(temp) == this.strToParse.charAt(temp+2)){	
+				this.questionType = this.strToParse.substring(value, this.strToParse.indexOf("}")+2);
+				value = this.strToParse.indexOf("}")+3;
 			}else{
-				if(parseStr.lastIndexOf("}") >= value){
-					typeStr = parseStr.substring(value,parseStr.indexOf("}"));
-					value = parseStr.indexOf("}")+1;
+				if(this.strToParse.lastIndexOf("}") >= value){
+					this.questionType = this.strToParse.substring(value, this.strToParse.indexOf("}"));
+					value = this.strToParse.indexOf("}")+1;
 				}else
 					return null;
 			}
 		}else
 			return null;
 
-		if(value < parseStr.length())
-			rep = parseStr.substring(value, parseStr.length());
+		if(value < this.strToParse.length())
+			this.response = this.strToParse.substring(value, this.strToParse.length());
 		else
 			return null;
 
-		if(q.getQuestion().equals(null) || typeStr.equals(null) || rep.equals(null))
+		if(this.question.getQuestion().equals(null) || this.questionType.equals(null) || this.response.equals(null))
 			return null;
 		else 
-			q = takeResponse(q, typeStr, rep);
-
-		return q;
+			this.question = takeResponse(this.question, this.questionType, this.response);
+		return this.question;
 	}
 
 
@@ -73,12 +87,12 @@ public class Parser {
 	 *
 	 *@return la question mis à jour
 	 **/
-	private static Question takeResponse(Question q, String typeStr, String rep) {
+	private Question takeResponse(Question q, String typeStr, String rep) {
 		if(typeStr.equals("type=\"()\"")){
 			/*Expression pour differencier le type de question*/
 			if(rep.matches("(\\s*[+-]\\s*(true|false|TRUE|FALSE).\\s*)*")){
 				q.setType(TypeQuestion.bool);
-				//q.setListeRep(parserGuillaume(rep));
+				//q.setListeRep(BooleanQuestion(rep));
 				System.out.println("Parser Guillaume");
 			}else{
 				q.setType(TypeQuestion.simple);
@@ -91,7 +105,7 @@ public class Parser {
 			System.out.println("Parser Cedric");
 
 		}else if(typeStr.equals("type=\"{}\"")){
-			q.setType(TypeQuestion.gapfil);
+			q.setType(TypeQuestion.gapfill);
 			//q.setListeRep(parserDax(rep));
 			System.out.println("Parser Dax");
 		}

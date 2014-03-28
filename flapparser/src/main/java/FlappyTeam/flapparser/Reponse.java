@@ -1,8 +1,8 @@
 package FlappyTeam.flapparser;
 
 public class Reponse {
-	boolean value;
-	String libele;
+	private boolean value;
+	private String libele;
 
 	public Reponse(boolean value, String libele) {
 		super();
