@@ -16,8 +16,8 @@ public class Question {
 	
 	public Question() {
 		super();
-		this.question = null;
-		this.type = null;
+		this.question = "";
+		this.type = TypeQuestion.undetermined;
 		this.listeRep = new ArrayList<Reponse>();
 	}
 
