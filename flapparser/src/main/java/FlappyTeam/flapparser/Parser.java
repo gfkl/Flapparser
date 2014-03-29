@@ -133,10 +133,10 @@ public class Parser {
             this.question.setType(TypeQuestion.multiple);
             //this.question.setListeRep(parserCedric(rep));
             System.out.println("Parser Cedric");
-
-        } else if (this.questionTypeStr.equals("type=\"{}\"")) {
+        }//Si seulement celui qui a fait getResponseByType avait donné un sens à rep
+        else if (this.questionTypeStr.equals("type=\"{}\"")) {
             this.question.setType(TypeQuestion.gapfill);
-            //this.question.setListeRep(parserDax(rep));
+            //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
         }
     }
