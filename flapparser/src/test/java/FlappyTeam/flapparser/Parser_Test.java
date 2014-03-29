@@ -67,8 +67,7 @@ public class Parser_Test {
 		p.setStrToParse(valideStr);
 		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.simple);
-		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");
-		
+		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");	
 	}
 	
 	@Test 
