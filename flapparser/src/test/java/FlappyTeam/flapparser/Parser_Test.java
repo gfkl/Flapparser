@@ -11,7 +11,7 @@ public class Parser_Test {
 	
 	@Before
 	public void setUp() throws Exception {
-		p = new Parser("");
+		p = new Parser(null);
 	}
 
 	@After
@@ -65,8 +65,10 @@ public class Parser_Test {
 	 public void valideSimpleString(){
 		String valideStr = "{La Suisse est la suisse. |type=\"()\"}blablabla" ;
 		p.setStrToParse(valideStr);
+		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.simple);
 		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");
+		
 	}
 	
 	@Test 
