@@ -118,7 +118,8 @@ public class Parser {
      *@return la question mis à jour
      **/
     private void getResponseByType() {
-        if (this.questionTypeStr.equals("type=\"()\"")) {
+    	System.out.println(this.questionTypeStr);
+        if (this.questionTypeStr.matches("\\s*(type=\"\\(\\)\")\\s*")) {
             /*Expression pour differencier le type de question*/
             if (this.responseStr.matches("(\\s*[+-]\\s*(true|false|TRUE|FALSE).\\s*)*")) {
                 this.question.setType(TypeQuestion.bool);
@@ -130,12 +131,12 @@ public class Parser {
                 //this.question.setListeRep(parserDamien(rep));
                 System.out.println("Parser Damien");
             }    
-        } else if (this.questionTypeStr.equals("type=\"[]\"")) {
+        } else if (this.questionTypeStr.matches("\\s*(type=\"\\[\\]\")\\s*")) {
             this.question.setType(TypeQuestion.multiple);
             //this.question.setListeRep(parserCedric(rep));
             System.out.println("Parser Cedric");
         }//Si seulement celui qui a fait getResponseByType avait donné un sens à rep
-        else if (this.questionTypeStr.equals("type=\"{}\"")) {
+        else if (this.questionTypeStr.matches("\\s*(type=\"\\{\\}\")\\s*")) {
             this.question.setType(TypeQuestion.gapfill);
             //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
