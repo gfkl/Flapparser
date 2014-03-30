@@ -1,9 +1,9 @@
 package FlappyTeam.flapparser;
 
 public class Parser {
-    private    Question    question;
-    private String         questionTypeStr;
-    private String        responseStr;
+    private    Question      question;
+    private    String        questionTypeStr;
+    private    String        responseStr;
     private    String        strToParse;
 
     public    Parser(String strToParse) {
@@ -122,8 +122,9 @@ public class Parser {
             /*Expression pour differencier le type de question*/
             if (this.responseStr.matches("(\\s*[+-]\\s*(true|false|TRUE|FALSE).\\s*)*")) {
                 this.question.setType(TypeQuestion.bool);
-                //this.question.setListeRep(BooleanQuestion(rep));
-                System.out.println("Parser Guillaume");
+                BooleanQuestion bq = new BooleanQuestion(this.responseStr);
+                bq.parser();
+//                this.question.setListeRep(BooleanQuestion(rep).);
             } else {
                 this.question.setType(TypeQuestion.simple);
                 //this.question.setListeRep(parserDamien(rep));
