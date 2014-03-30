@@ -7,20 +7,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class Parser_BooleanQuestion {
-	protected Parser	p;
+	protected BooleanQuestion	bq;
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Parser("");
+		bq = new BooleanQuestion("+TRUE. -FALSE.");
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	
-	public void	booleanQuestion() {
-		p.setStrToParse("{Bulgaria and Rumania joined the European Union in 2007. | type=\"()\"} + TRUE. - FALSE.");
+	@Test
+	public void	testBooleanQuestion() {
+		Reponse reponse1 = bq.parser().get(0);
+		Reponse reponse2 = bq.parser().get(1);
+		assertTrue(reponse1.Equals(new Reponse(true, "TRUE.")));
+		assertTrue(reponse2.Equals(new Reponse(false, "FALSE.")));
 	}
 
 }

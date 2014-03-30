@@ -25,4 +25,13 @@ public class Reponse {
     public void setLibele(String libele) {
         this.libele = libele;
     }
+    
+    public boolean	Equals(Object o) {
+    	if (o instanceof Reponse) {
+    		if (((Reponse) o).getLibele().equals(this.libele) 
+    				&& ((Reponse) o).isValue() == this.isValue())
+    			return true;
+    	}
+    	return false;
+    }
 }
