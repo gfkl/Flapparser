@@ -22,8 +22,8 @@ public class Parser_BooleanQuestion {
 	public void	testBooleanQuestion() {
 		Reponse reponse1 = bq.parser().get(0);
 		Reponse reponse2 = bq.parser().get(1);
-		assertTrue(reponse1.Equals(new Reponse(true, "TRUE.")));
-		assertTrue(reponse2.Equals(new Reponse(false, "FALSE.")));
+		assertTrue(reponse1.equals(new Reponse(true, "TRUE.")));
+		assertTrue(reponse2.equals(new Reponse(false, "FALSE.")));
 	}
 
 }
