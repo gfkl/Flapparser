@@ -22,44 +22,57 @@ public class Parser_Test {
 	}
 
 	@Test
+	public void failStringNull() {
+		p.doParser();
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public void failString() {
+		p.setStrToParse("");
+		p.doParser();
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
 	public void failString_1() {
 		p.setStrToParse("{La Sui");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	@Test
 	public void failString_2() {
 		p.setStrToParse("{La Suisse est membre de l'Union Europenne. |");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	
 	@Test
 	public void failString_3() {
 		p.setStrToParse("{La Suisse est membre de l'Union Europenne. | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	
 	@Test
 	public void failString_4() {
 		p.setStrToParse("{type=\"()\" | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	
 	@Test
 	public void failString_5() {
 		p.setStrToParse("{type=\"{}\" | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	
 	@Test
 	public void failString_6() {
 		p.setStrToParse("{Blablabla | type=\"{}\" il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+		assertEquals(p.getQuestion(), null);
 	}
 	
 	@Test 
@@ -67,7 +80,23 @@ public class Parser_Test {
 		String valideStr = "La Suisse est la suisse. |type=\"()\"}blablabla" ;
 		p.setStrToParse(valideStr);
 		p.doParser();
-		assertEquals(p.getQuestion().getQuestion(), null);
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public void getStrToParse(){
+		String valideStr = "{La Suisse est membre de l'Union Europenne. |type=\"{}\"}blablabla" ;
+		p.setStrToParse(valideStr);
+		p.doParser();
+		assertEquals(p.getStrToParse(), valideStr);
+	}
+	
+	@Test
+	public void getStrToParse1(){
+		String valideStr = "{La Suisse est membre de l'Union Europenne. |type=\"()\"}a" ;
+		p.setStrToParse(valideStr);
+		p.doParser();
+		assertEquals(p.getQuestion().getQuestion(), "La Suisse est membre de l'Union Europenne. ");
 	}
 	
 	@Test 

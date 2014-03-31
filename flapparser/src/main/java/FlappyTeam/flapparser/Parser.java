@@ -30,7 +30,7 @@ public class Parser {
     }
 
     /**@author Houpert
-     * @return L'objet question*/
+     * @return la question*/
     public final Question getQuestion() {
         return this.question;
     }
@@ -43,14 +43,14 @@ public class Parser {
 
     /**
      *@author Houpert
-     *@return la chaine de question
+     *@return l'index de debut du type
      **/
     private int takeQuestion() {
         String resQ;
-        if (this.strToParse.indexOf("|") != -1
+        if (this.getStrToParse().indexOf("|") != -1
                 && this.strToParse.indexOf("{") == 0) {
             resQ = this.strToParse.substring(1, this.strToParse.indexOf("|"));
-            this.question.setQuestion(resQ);
+            this.getQuestion().setQuestion(resQ);
             return (this.strToParse.indexOf("|") + 1);
         } else {
             return -1;
@@ -110,35 +110,28 @@ public class Parser {
         return -1;
     }
 
-    /**
-     *@author Houpert
-     **/
+    /**@author Houpert*/
     public final void doParser() {
-        int value = 0;
+        if (this.getStrToParse() != null) {
+            int value = takeQuestion();
+            if (value == -1) {
+                setQuestion(null);
+                return;
+            }
 
-        value = takeQuestion();
-        if (value == -1) {
-            setQuestion(null);
-            return;
-        }
-
-        value = takeQuestionType(value);
-        if (value == -1) {
-            setQuestion(null);
-            return;
-        }
-        value = takeReponseStr(value);
-        if (value == -1) {
-            setQuestion(null);
-            return;
-        }
-        if (this.question.getQuestion() != null
-                && this.questionTypeStr != null
-                && this.responseStr != null) {
+            value = takeQuestionType(value);
+            if (value == -1) {
+                setQuestion(null);
+                return;
+            }
+            value = takeReponseStr(value);
+            if (value == -1) {
+                setQuestion(null);
+                return;
+            }
             getResponseByType();
         } else {
-            setQuestion(null);
-            return;
+        	setQuestion(null);
         }
     }
 
@@ -170,23 +163,26 @@ public class Parser {
             /*Expression pour differencier le type de question*/
             String matcheBool = "(\\s*[+-]\\s*(true|false|TRUE|FALSE).\\s*)*";
             if (this.responseStr.matches(matcheBool)) {
-                this.question.setType(TypeQuestion.bool);
+                this.getQuestion().setType(TypeQuestion.bool);
                 BooleanQuestion bq = new BooleanQuestion(this.responseStr);
                 bq.parser();
                 //this.question.setListeRep(BooleanQuestion(rep).);
             } else {
-                this.question.setType(TypeQuestion.simple);
+                this.getQuestion().setType(TypeQuestion.simple);
                 //this.question.setListeRep(parserDamien(rep));
                 System.out.println("Parser Damien");
             }
         } else if (this.questionTypeStr.matches(matchedExpr("[]"))) {
-            this.question.setType(TypeQuestion.multiple);
+            this.getQuestion().setType(TypeQuestion.multiple);
             //this.question.setListeRep(parserCedric(rep));
             System.out.println("Parser Cedric");
         } else if (this.questionTypeStr.matches(matchedExpr("{}"))) {
-            this.question.setType(TypeQuestion.gapfill);
+            this.getQuestion().setType(TypeQuestion.gapfill);
             //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
+        } else {
+            setQuestion(null);
+            return;
         }
     }
 }
