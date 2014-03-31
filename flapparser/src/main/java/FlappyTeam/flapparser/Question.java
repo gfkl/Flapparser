@@ -20,7 +20,7 @@ public class Question {
     /***/
     public Question() {
         super();
-        this.question = "";
+        this.question = null;
         this.type = TypeQuestion.undetermined;
         this.listeRep = new ArrayList<Reponse>();
     }

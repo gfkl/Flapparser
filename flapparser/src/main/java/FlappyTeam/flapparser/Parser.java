@@ -18,9 +18,15 @@ public class Parser {
     }
 
     /**@author Houpert
-     * @param strToParseNew ,nouvel chain a parser*/
+     * @param strToParseNew ,new chaine a parser*/
     public final void setStrToParse(final String strToParseNew) {
         this.strToParse = strToParseNew;
+    }
+
+    /**@author Houpert
+     * @param questionNew ,nouvelleValeur de la question*/
+    public final void setQuestion(final Question questionNew) {
+        this.question = questionNew;
     }
 
     /**@author Houpert
@@ -37,7 +43,6 @@ public class Parser {
 
     /**
      *@author Houpert
-     *
      *@return la chaine de question
      **/
     private int takeQuestion() {
@@ -113,14 +118,18 @@ public class Parser {
 
         value = takeQuestion();
         if (value == -1) {
+            setQuestion(null);
             return;
         }
+
         value = takeQuestionType(value);
         if (value == -1) {
+            setQuestion(null);
             return;
         }
         value = takeReponseStr(value);
         if (value == -1) {
+            setQuestion(null);
             return;
         }
         if (this.question.getQuestion() != null
@@ -128,6 +137,7 @@ public class Parser {
                 && this.responseStr != null) {
             getResponseByType();
         } else {
+            setQuestion(null);
             return;
         }
     }
