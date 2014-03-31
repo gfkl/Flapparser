@@ -26,7 +26,7 @@ public class Reponse {
         this.libele = libele;
     }
     
-    public boolean	Equals(Object o) {
+    public boolean	equals(Object o) {
     	if (o instanceof Reponse) {
     		if (((Reponse) o).getLibele().equals(this.libele) 
     				&& ((Reponse) o).isValue() == this.isValue())
