@@ -51,7 +51,6 @@ public class Parser {
 
 		if (this.strToParse.indexOf("}") != -1) {
 			temp = this.strToParse.indexOf("}");
-			if(this.strToParse.indexOf("}", temp+1) != -1);
 			temp2 = this.strToParse.indexOf("}", temp+1);
 
 			if (temp < temp2) {
