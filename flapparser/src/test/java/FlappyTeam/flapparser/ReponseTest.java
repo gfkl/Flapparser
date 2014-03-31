@@ -17,6 +17,11 @@ public class ReponseTest {
 	public void valueIsTrue() {
 		assertEquals(r.isValue(), true);
 		assertEquals(r.getLibele(), "Je suis la reponse");
+		r.setValue(false);
+		assertEquals(r.isValue(), false);
+		r.setLibele("blabla");
+		assertEquals(r.getLibele().equals("Je suis la reponse"), false);
+		assertEquals(r.getLibele().equals("blabla"), true);
 	}
 	
 	@Test
