@@ -1,9 +1,10 @@
 package FlappyTeam.flapparser;
 
+/***/
 public class Multiple {
-	
-	Multiple(String rep) {
-		
-	}
+
+    Multiple(final String rep) {
+        
+    }
 
 }
