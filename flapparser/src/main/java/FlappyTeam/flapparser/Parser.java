@@ -47,11 +47,15 @@ public class Parser {
      **/
     private int takeQuestion() {
         String resQ;
-        if (this.getStrToParse().indexOf("|") != -1
-                && this.strToParse.indexOf("{") == 0) {
-            resQ = this.strToParse.substring(1, this.strToParse.indexOf("|"));
-            this.getQuestion().setQuestion(resQ);
-            return (this.strToParse.indexOf("|") + 1);
+        int value;
+        if (this.strToParse.indexOf("{") == 0) {
+            value = this.getStrToParse().indexOf("|");
+                if (value != -1) {
+                resQ = this.strToParse.substring(1, value);
+                this.getQuestion().setQuestion(resQ);
+                return (this.strToParse.indexOf("|") + 1);
+            }
+            return -1;
         } else {
             return -1;
         }
@@ -79,7 +83,7 @@ public class Parser {
                 }
                 this.questionTypeStr = this.strToParse.substring(value, temp2);
                 return (temp2);
-            } else if (this.strToParse.lastIndexOf("}") >= value) {
+            } else if (this.strToParse.indexOf("}") >= value) {
                 temp = this.strToParse.indexOf("}");
                 this.questionTypeStr = this.strToParse.substring(value, temp);
                 return (this.strToParse.indexOf("}") + 1);
@@ -114,25 +118,28 @@ public class Parser {
     public final void doParser() {
         if (this.getStrToParse() != null) {
             int value = takeQuestion();
+            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
             }
 
             value = takeQuestionType(value);
+            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
             }
             value = takeReponseStr(value);
+            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
             }
             getResponseByType();
-        } else {
-        	setQuestion(null);
+            return;
         }
+        setQuestion(null);
     }
 
 
@@ -151,8 +158,6 @@ public class Parser {
             matche += "\\[" + str + "\\]" + str + "\")" + str;
         } else if (typeStr.equals("()")) {
             matche += "\\(" + str + "\\)" + str + "\")" + str;
-        } else {
-            return null;
         }
         return matche;
     }

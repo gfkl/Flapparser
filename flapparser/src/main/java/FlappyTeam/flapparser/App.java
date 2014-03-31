@@ -11,13 +11,18 @@ public class App {
      * @param args*/
     public static void main(final String[] args) {
         String strParse;
-        strParse = "{La Suisse est membre de l'Union Europenne. |type=\"()\"}a";
-       // strParse = "{Blablabla | type=\"{}\" il y a des reponses la";
+        //strParse = "{type=\"()\"}a";
+        //strParse = "{";
+        strParse = "{Blablabla |";
+        //strParse = "{Blablabla |type=\"()\"}";
+        //strParse = "{Blablabla |type=\"()\"}et la rep";
         Parser p = new Parser(strParse);
+       // p.setStrToParse(null);
         p.doParser();
         System.out.println(p.getQuestion());
-        if (p.getQuestion() != null)
+        if (p.getQuestion() != null) {
             System.out.println(p.getQuestion().getType());
+        }
         System.out.println("Hello World!");
     }
 }

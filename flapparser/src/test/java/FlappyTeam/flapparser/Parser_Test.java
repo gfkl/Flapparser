@@ -22,10 +22,41 @@ public class Parser_Test {
 	}
 
 	@Test
-	public void failStringNull() {
+	public void failStringSetAsNull() {
+        p.setStrToParse(null);
 		p.doParser();
 		assertEquals(p.getQuestion(), null);
 	}
+	
+	@Test
+	public void failNoQuestion() {
+		p.setStrToParse("{");
+		p.doParser();
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public void failNoType() {
+		p.setStrToParse("{Blablabla |");
+		p.doParser();
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public void failNoRep() {
+		p.setStrToParse("{Blablabla |type=\"()\"}");
+		p.doParser();
+		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public void good() {
+		p.setStrToParse("{Blablabla |type=\"()\"}et la rep");
+		p.doParser();
+		assertEquals(p.getQuestion().getType(), TypeQuestion.simple);
+	}
+	
+
 	
 	@Test
 	public void failString() {
