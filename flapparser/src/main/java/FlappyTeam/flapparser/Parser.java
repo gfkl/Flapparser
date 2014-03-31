@@ -32,7 +32,7 @@ public class Parser {
 	 *@return la chaine de question
 	 **/
 	private int takeQuestion() {
-		if (this.strToParse.indexOf("|") != -1 && this.strToParse.indexOf("{") != -1 && this.strToParse.indexOf("{") == 0 ) {
+		if (this.strToParse.indexOf("|") != -1 && this.strToParse.indexOf("{") == 0 ) {
 			this.question.setQuestion(this.strToParse.substring(1, this.strToParse.indexOf("|")));
 			return (this.strToParse.indexOf("|")+1);
 		} else 
@@ -106,8 +106,8 @@ public class Parser {
 		if((value = takeReponseStr(value)) == -1)
 			return ;
 
-		if (!this.question.getQuestion().equals(null) && !this.questionTypeStr.equals(null) 
-				&& !this.responseStr.equals(null)) {
+		if (this.question.getQuestion() != null && this.questionTypeStr != null
+				&& this.responseStr != null) {
 			getResponseByType();
 		}else return;
 	}
