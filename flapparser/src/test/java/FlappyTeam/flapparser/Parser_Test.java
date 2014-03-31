@@ -52,6 +52,13 @@ public class Parser_Test {
 		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
 	}
 	
+	@Test
+	public void failString_6() {
+		p.setStrToParse("{Blablabla | type=\"{}\" il y a des reponses la");
+		p.doParser();
+		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
+	}
+	
 	@Test 
 	 public void valideGapfillString(){
 		String valideStr = "{La Suisse est membre de l'Union Europenne. |type=\"{}\"}blablabla" ;
