@@ -6,6 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import FlappyTeam.flapparser.Parser;
+import FlappyTeam.flapparser.TypeQuestion;
+
 public class Parser_Test {
 	protected Parser p;
 	
