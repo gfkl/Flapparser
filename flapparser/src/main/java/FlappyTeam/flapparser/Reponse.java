@@ -1,37 +1,49 @@
 package FlappyTeam.flapparser;
 
+/***/
 public class Reponse {
-    private boolean value;
-    private String libele;
+    /***/private boolean value;
+    /***/private String libele;
 
-    public Reponse(boolean value, String libele) {
+    /**
+     * @param valueNew ,true/false
+     * @param libeleNew , chaine de la reponse
+     */
+    public Reponse(final boolean valueNew, final String libeleNew) {
         super();
-        this.value = value;
-        this.libele = libele;
+        this.value = valueNew;
+        this.libele = libeleNew;
     }
 
-    public boolean isValue() {
+    /**@return la valeur*/
+    public final boolean isValue() {
         return value;
     }
 
-    public void setValue(boolean value) {
-        this.value = value;
+    /**@param valueNew update value*/
+    public final void setValue(final boolean valueNew) {
+        this.value = valueNew;
     }
 
-    public String getLibele() {
+    /**@return le libele*/
+    public final String getLibele() {
         return libele;
     }
 
-    public void setLibele(String libele) {
-        this.libele = libele;
+    /**@param libeleNew update value libele*/
+    public final void setLibele(final String libeleNew) {
+        this.libele = libeleNew;
     }
-    
-    public boolean	equals(Object o) {
-    	if (o instanceof Reponse) {
-    		if (((Reponse) o).getLibele().equals(this.libele) 
-    				&& ((Reponse) o).isValue() == this.isValue())
-    			return true;
-    	}
-    	return false;
+
+    /**@param o ,object to compare
+     * @return si les object sont egaux*/
+    public boolean    equals(final Object o) {
+        if (o instanceof Reponse) {
+            if (((Reponse) o).getLibele().equals(this.libele)
+                    && ((Reponse) o).isValue() == this.isValue()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

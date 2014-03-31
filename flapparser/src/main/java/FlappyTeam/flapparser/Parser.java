@@ -3,7 +3,7 @@ package FlappyTeam.flapparser;
 /**@author Houpert*/
 public class Parser {
 
-    /***/private static Question question;
+    /***/private Question question;
     /***/private String questionTypeStr;
     /***/private String responseStr;
     /***/private String strToParse;

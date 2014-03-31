@@ -2,18 +2,22 @@ package FlappyTeam.flapparser;
 
 import java.util.ArrayList;
 
+/***/
 public class Question {
-    private String question;
-    private TypeQuestion type;
-    private ArrayList<Reponse> listeRep;
+    /***/private String question;
+    /***/private TypeQuestion type;
+    /***/private ArrayList<Reponse> listeRep;
 
-    public Question(String question, TypeQuestion type) {
+    /**@param questionNew la question
+     * @param typeNew le type */
+    public Question(final String questionNew, final TypeQuestion typeNew) {
         super();
-        this.question = question;
-        this.type = type;
+        this.question = questionNew;
+        this.type = typeNew;
         this.listeRep = new ArrayList<Reponse>();
     }
-    
+
+    /***/
     public Question() {
         super();
         this.question = "";
@@ -21,35 +25,32 @@ public class Question {
         this.listeRep = new ArrayList<Reponse>();
     }
 
-    @Override
-    public String toString() {
-        return "Question [question=" + question + "\n type=" + type
-                + "\n listeRep=" + listeRep + "]";
-    }
-    
-    public String getQuestion() {
+    /**@return la question*/
+    public final String getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    /**@param questionNew update de la question*/
+    public final void setQuestion(final String questionNew) {
+        this.question = questionNew;
     }
 
-    public TypeQuestion getType() {
+    /**@return le type*/
+    public final TypeQuestion getType() {
         return type;
     }
 
-    public void setType(TypeQuestion type) {
-        this.type = type;
+    /**@param typeNew update type question*/
+    public final void setType(final TypeQuestion typeNew) {
+        this.type = typeNew;
     }
 
-    public ArrayList<Reponse> getListeRep() {
+    /**@return la liste de reponse*/
+    public final ArrayList<Reponse> getListeRep() {
         return listeRep;
     }
-
-    public void setListeRep(ArrayList<Reponse> listeRep) {
-        this.listeRep = listeRep;
+    /**@param listeRepNew update liste de reponse*/
+    public final void setListeRep(final ArrayList<Reponse> listeRepNew) {
+        this.listeRep = listeRepNew;
     }
-    
-    
 }
