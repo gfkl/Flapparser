@@ -63,6 +63,14 @@ public class Parser_Test {
 	}
 	
 	@Test 
+	 public void failString_7(){
+		String valideStr = "La Suisse est la suisse. |type=\"()\"}blablabla" ;
+		p.setStrToParse(valideStr);
+		p.doParser();
+		assertEquals(p.getQuestion().getQuestion(), null);
+	}
+	
+	@Test 
 	 public void valideGapfillString(){
 		String valideStr = "{La Suisse est membre de l'Union Europenne. |type=\"{}\"}blablabla" ;
 		p.setStrToParse(valideStr);
