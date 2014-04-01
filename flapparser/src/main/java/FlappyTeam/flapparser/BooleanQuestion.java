@@ -2,11 +2,10 @@ package FlappyTeam.flapparser;
 
 import java.util.ArrayList;
 
-/***/
-public class BooleanQuestion {
 
-    /***/private String                reponses;
-    /***/private ArrayList<Reponse>    reponseList;
+public class BooleanQuestion {
+    private String                reponses;
+    private ArrayList<Reponse>    reponseList;
 
     /**
      * @param repNew comment here
