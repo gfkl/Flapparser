@@ -186,7 +186,7 @@ public class Parser {
             //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
         } else {
-            setQuestion(null);
+        	this.getQuestion().setType(TypeQuestion.undetermined);
             return;
         }
     }

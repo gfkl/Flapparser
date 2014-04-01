@@ -107,11 +107,22 @@ public class Parser_Test {
 	}
 	
 	@Test 
-	 public void failString_7(){
+	public void failString_7(){
 		String valideStr = "La Suisse est la suisse. |type=\"()\"}blablabla" ;
 		p.setStrToParse(valideStr);
 		p.doParser();
 		assertEquals(p.getQuestion(), null);
+	}
+	
+	@Test
+	public	void	StringWithTabAndEnterChar() {
+		String	valideStr = "\t{La Suisse est la suisse. \n|\ttype=\"[]\"}\n +TRUE. -FALSE.";
+		p.setStrToParse(valideStr);
+		p.doParser();
+		assertEquals(p.getQuestion().getType(), TypeQuestion.bool);
+		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");
+		assertTrue(p.getQuestion().getListeRep().get(0).equals(new Reponse(true, "TRUE.")));
+		assertTrue(p.getQuestion().getListeRep().get(1).equals(new Reponse(false, "FALSE.")));
 	}
 	
 	@Test
@@ -165,5 +176,13 @@ public class Parser_Test {
 		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.multiple);
 		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");
+	}
+	
+	@Test 
+	 public void invalideTypeString(){
+		String valideStr = "{La Suisse est la suisse. |type=\"[@\"} +TRUE. -FALSE." ;
+		p.setStrToParse(valideStr);
+		p.doParser();
+		assertEquals(p.getQuestion().getType(), TypeQuestion.undetermined);
 	}
 }
