@@ -2,9 +2,15 @@ package FlappyTeam.flapparser;
 
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Guillaume
+ *
+ */
 public class BooleanQuestion {
+    /** */
     private String                reponses;
+    /** */
     private ArrayList<Reponse>    reponseList;
 
     /**
@@ -26,9 +32,11 @@ public class BooleanQuestion {
 
         lastIndex = this.reponses.indexOf(' ', index);
         if (lastIndex > index) {
-            newReponse = new Reponse(value, this.reponses.substring(index, lastIndex));
+            newReponse = new Reponse(value,
+                    this.reponses.substring(index, lastIndex));
         } else {
-            newReponse = new Reponse(value, this.reponses.substring(index, this.reponses.length()));
+            newReponse = new Reponse(value, this.reponses.substring(index,
+                    this.reponses.length()));
         }
         this.reponseList.add(newReponse);
         return 1;
@@ -50,3 +58,5 @@ public class BooleanQuestion {
     }
 
 }
+
+

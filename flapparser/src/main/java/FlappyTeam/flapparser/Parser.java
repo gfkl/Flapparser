@@ -1,12 +1,19 @@
 package FlappyTeam.flapparser;
 
-/**@author Houpert*/
+/**
+ *
+ * @author Guillaume
+ *
+ */
 public class Parser {
-
-    /***/private Question question;
-    /***/private String questionTypeStr;
-    /***/private String responseStr;
-    /***/private String strToParse;
+    /** */
+    private Question question;
+    /** */
+    private String questionTypeStr;
+    /** */
+    private String responseStr;
+    /** */
+    private String strToParse;
 
     /**@author Houpert
      * @param strToParseNew ,la chaine de charactère a parser*/
@@ -186,8 +193,10 @@ public class Parser {
             //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
         } else {
-        	this.getQuestion().setType(TypeQuestion.undetermined);
+            this.getQuestion().setType(TypeQuestion.undetermined);
             return;
         }
     }
 }
+
+

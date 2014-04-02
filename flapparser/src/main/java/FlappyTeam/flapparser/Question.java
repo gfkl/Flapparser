@@ -2,11 +2,18 @@ package FlappyTeam.flapparser;
 
 import java.util.ArrayList;
 
-/***/
+/**
+ *
+ * @author Guillaume
+ *
+ */
 public class Question {
-    /***/private String question;
-    /***/private TypeQuestion type;
-    /***/private ArrayList<Reponse> listeRep;
+    /** */
+    private String question;
+    /** */
+    private TypeQuestion type;
+    /** */
+    private ArrayList<Reponse> listeRep;
 
     /**@param questionNew la question
      * @param typeNew le type */
@@ -54,3 +61,4 @@ public class Question {
         this.listeRep = listeRepNew;
     }
 }
+

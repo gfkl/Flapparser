@@ -1,9 +1,15 @@
 package FlappyTeam.flapparser;
 
-/***/
+/**
+ *
+ * @author Guillaume
+ *
+ */
 public class Reponse {
-    /***/private boolean value;
-    /***/private String libele;
+    /** */
+    private boolean value;
+    /** */
+    private String libele;
 
     /**
      * @param valueNew ,true/false
@@ -38,17 +44,13 @@ public class Reponse {
     /**
      * @return hashcode
      */
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((libele == null) ? 0 : libele.hashCode());
-        result = prime * result + (value ? 1231 : 1237);
-        return result;
+    public final int hashCode() {
+        return this.libele.hashCode();
     }
 
     /**@param o ,object to compare
      * @return si les object sont egaux*/
-    public boolean    equals(final Object o) {
+    public final boolean    equals(final Object o) {
         if (o instanceof Reponse) {
             if (((Reponse) o).getLibele().equals(this.libele)
                     && ((Reponse) o).isValue() == this.isValue()) {
@@ -58,3 +60,4 @@ public class Reponse {
         return false;
     }
 }
+
