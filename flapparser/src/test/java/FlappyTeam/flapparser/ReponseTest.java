@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import flappyteam.flapparser.Reponse;
+
 public class ReponseTest {
 	protected Reponse r;
 	

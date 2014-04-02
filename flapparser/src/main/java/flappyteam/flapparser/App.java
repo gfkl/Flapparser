@@ -1,5 +1,5 @@
 
-package FlappyTeam.flapparser;
+package flappyteam.flapparser;
 
 /***
  *
@@ -16,9 +16,8 @@ public final class App {
 
     /**
      *
-     * @param args
      */
-    public static void main(final String[] args) {
+    public static void main() {
         String strParse;
         strParse = "{Blablabla |";
         Parser p = new Parser(strParse);

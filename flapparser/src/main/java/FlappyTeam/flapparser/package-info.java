@@ -1,3 +1,0 @@
-/** */
-package FlappyTeam.flapparser;
-

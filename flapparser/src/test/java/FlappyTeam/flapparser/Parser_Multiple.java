@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import FlappyTeam.flapparser.Parser;
+import flappyteam.flapparser.Parser;
 
 public class Parser_Multiple {
 	

@@ -1,4 +1,4 @@
-package FlappyTeam.flapparser;
+package flappyteam.flapparser;
 
 import java.util.ArrayList;
 

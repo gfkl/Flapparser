@@ -6,8 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import FlappyTeam.flapparser.BooleanQuestion;
-import FlappyTeam.flapparser.Reponse;
+import flappyteam.flapparser.BooleanQuestion;
+import flappyteam.flapparser.Reponse;
 
 public class Parser_BooleanQuestion {
 	protected BooleanQuestion	bq;
