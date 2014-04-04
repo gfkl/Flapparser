@@ -63,48 +63,48 @@ public class Parser_Test {
 	public void failString() {
 		p.setStrToParse("");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public void failString_1() {
 		p.setStrToParse("{La Sui");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	@Test
 	public void failString_2() {
 		p.setStrToParse("{La Suisse est membre de l'Union Europenne. |");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public void failString_3() {
 		p.setStrToParse("{La Suisse est membre de l'Union Europenne. | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public void failString_4() {
 		p.setStrToParse("{type=\"()\" | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public void failString_5() {
 		p.setStrToParse("{type=\"{}\" | il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public void failString_6() {
 		p.setStrToParse("{Blablabla | type=\"{}\" il y a des reponses la");
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test 
@@ -112,16 +112,16 @@ public class Parser_Test {
 		String valideStr = "La Suisse est la suisse. |type=\"()\"}blablabla" ;
 		p.setStrToParse(valideStr);
 		p.doParser();
-		assertEquals(p.getQuestion(), null);
+		assertNull(p.getQuestion());
 	}
 	
 	@Test
 	public	void	StringWithTabAndEnterChar() {
-		String	valideStr = "\t{La Suisse est la suisse. \n|\ttype=\"[]\"}\n +TRUE. -FALSE.";
+		String	valideStr = "{La Suisse est la suisse. \n|\ttype=\"()\"} +TRUE. -FALSE.";
 		p.setStrToParse(valideStr);
 		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.bool);
-		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. ");
+		assertEquals(p.getQuestion().getQuestion(), "La Suisse est la suisse. \n");
 		assertTrue(p.getQuestion().getListeRep().get(0).equals(new Reponse(true, "TRUE.")));
 		assertTrue(p.getQuestion().getListeRep().get(1).equals(new Reponse(false, "FALSE.")));
 	}

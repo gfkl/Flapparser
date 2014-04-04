@@ -54,15 +54,25 @@ public class Parser {
      **/
     private int takeQuestion() {
         String resQ;
-        int value;
+        int value, nbChar1 = 0, nbChar2 = 0, nbChar3 = 0, posChar;
+        for (int i = 0; i < strToParse.length(); i++) {
+        	if (strToParse.toCharArray()[i] == '{')
+        		nbChar1++;
+        	if (strToParse.toCharArray()[i] == '}')
+        		nbChar2++;
+        	if (strToParse.toCharArray()[i] == '|')
+        		nbChar3++;
+        }
+        /** Erreur à traiter au propre */
+        if (nbChar1 == 0 || nbChar2 == 0 || 
+        		nbChar1 != nbChar2 || nbChar3 != 1)
+        	return -1;
+        //for ()
         if (this.strToParse.indexOf("{") == 0) {
             value = this.getStrToParse().indexOf("|");
-                if (value != -1) {
-                resQ = this.strToParse.substring(1, value);
-                this.getQuestion().setQuestion(resQ);
-                return (this.strToParse.indexOf("|") + 1);
-            }
-            return -1;
+            resQ = this.strToParse.substring(1, value);
+            this.getQuestion().setQuestion(resQ);
+            return (this.strToParse.indexOf("|") + 1);
         } else {
             return -1;
         }
@@ -125,20 +135,16 @@ public class Parser {
     public final void doParser() {
         if (this.getStrToParse() != null) {
             int value = takeQuestion();
-            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
             }
-
             value = takeQuestionType(value);
-            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
             }
             value = takeReponseStr(value);
-            System.out.println(value);
             if (value == -1) {
                 setQuestion(null);
                 return;
@@ -177,8 +183,7 @@ public class Parser {
             if (this.responseStr.matches(matcheBool)) {
                 this.getQuestion().setType(TypeQuestion.bool);
                 BooleanQuestion bq = new BooleanQuestion(this.responseStr);
-                bq.parser();
-                //this.question.setListeRep(BooleanQuestion(rep).);
+                this.question.setListeRep(bq.parser());
             } else {
                 this.getQuestion().setType(TypeQuestion.simple);
                 //this.question.setListeRep(parserDamien(rep));
@@ -193,7 +198,6 @@ public class Parser {
             //this.question.setListeRep(Gapfill.parser(rep));
             System.out.println("Parser Dax");
         } else {
-            this.getQuestion().setType(TypeQuestion.undetermined);
             return;
         }
     }
