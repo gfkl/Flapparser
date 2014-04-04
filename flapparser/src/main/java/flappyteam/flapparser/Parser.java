@@ -54,7 +54,7 @@ public class Parser {
      **/
     private int takeQuestion() {
         String resQ;
-        int value, nbChar1 = 0, nbChar2 = 0, nbChar3 = 0, posChar;
+        int nbChar1 = 0, nbChar2 = 0, nbChar3 = 0, posChar1, posChar2;
         for (int i = 0; i < strToParse.length(); i++) {
         	if (strToParse.toCharArray()[i] == '{')
         		nbChar1++;
@@ -67,15 +67,13 @@ public class Parser {
         if (nbChar1 == 0 || nbChar2 == 0 || 
         		nbChar1 != nbChar2 || nbChar3 != 1)
         	return -1;
-        //for ()
-        if (this.strToParse.indexOf("{") == 0) {
-            value = this.getStrToParse().indexOf("|");
-            resQ = this.strToParse.substring(1, value);
-            this.getQuestion().setQuestion(resQ);
-            return (this.strToParse.indexOf("|") + 1);
-        } else {
-            return -1;
-        }
+    	posChar1 = this.getStrToParse().indexOf("{");
+    	posChar2 = this.getStrToParse().indexOf("|");
+        if (posChar2 < posChar1 + 1)
+        	return -1;
+        resQ = this.strToParse.substring(posChar1 + 1, posChar2);
+        this.getQuestion().setQuestion(resQ);
+        return (this.strToParse.indexOf("|") + 1);
     }
 
     /**

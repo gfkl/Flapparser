@@ -116,8 +116,36 @@ public class Parser_Test {
 	}
 	
 	@Test
+	public void failString_8() {
+		p.setStrToParse("Blablabla |{type=\"()\"}et la rep");
+		p.doParser();
+		assertNull(p.getQuestion());
+	}
+
+	@Test
+	public void failString_9() {
+		p.setStrToParse("{Blablabla |type=\"()\"}et la rep}");
+		p.doParser();
+		assertNull(p.getQuestion());
+	}
+
+	@Test
+	public void failString_10() {
+		p.setStrToParse("{Bla |blabla |type=\"()\"}et la rep");
+		p.doParser();
+		assertNull(p.getQuestion());
+	}
+
+	@Test
+	public void failString_11() {
+		p.setStrToParse("{Blablabla| }et la rep");
+		p.doParser();
+		assertNull(p.getQuestion());
+	}
+	
+	@Test
 	public	void	StringWithTabAndEnterChar() {
-		String	valideStr = "{La Suisse est la suisse. \n|\ttype=\"()\"} +TRUE. -FALSE.";
+		String	valideStr = "\n \t{La Suisse est la suisse. \n|\ttype=\"()\"} +TRUE. -FALSE.";
 		p.setStrToParse(valideStr);
 		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.bool);
@@ -153,7 +181,7 @@ public class Parser_Test {
 	
 	@Test 
 	 public void valideSimpleString(){
-		String valideStr = "{La Suisse est la suisse. |type=\"()\"}blablabla" ;
+		String valideStr = "{La Suisse est la suisse. |type=\"()\"} +blablabla -bla -bla" ;
 		p.setStrToParse(valideStr);
 		p.doParser();
 		assertEquals(p.getQuestion().getType(), TypeQuestion.simple);
