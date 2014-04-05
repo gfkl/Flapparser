@@ -84,31 +84,16 @@ public class Parser {
     private int takeQuestionType(final int value) {
         int temp, temp2;
 
-        if (this.strToParse.indexOf("}") != -1) {
-            temp = this.strToParse.indexOf("}");
-            temp2 = this.strToParse.indexOf("}", temp + 1);
+        temp = this.strToParse.indexOf("}");
+        temp2 = this.strToParse.indexOf("}", temp + 1);
 
-            if (temp < temp2) {
-                String str;
-                for (int i = temp; i <= temp2; i++) {
-                    str = Character.toString(this.strToParse.charAt(i));
-                    if (!(str.matches("[\\s\\n\\t]|\\}|\""))) {
-                        return -1;
-                    }
-                }
-                this.questionTypeStr = this.strToParse.substring(value, temp2);
-                return (temp2);
-            } else if (this.strToParse.indexOf("}") >= value) {
-                temp = this.strToParse.indexOf("}");
-                this.questionTypeStr = this.strToParse.substring(value, temp);
-                return (this.strToParse.indexOf("}") + 1);
-            } else {
-                return -1;
-            }
+        if (temp < temp2) {
+            this.questionTypeStr = this.strToParse.substring(value, temp2);
+            return (temp2);
         } else {
-            return -1;
+            this.questionTypeStr = this.strToParse.substring(value, temp);
+            return (this.strToParse.indexOf("}") + 1);
         }
-
     }
 
     /**
@@ -138,10 +123,6 @@ public class Parser {
                 return;
             }
             value = takeQuestionType(value);
-            if (value == -1) {
-                setQuestion(null);
-                return;
-            }
             value = takeReponseStr(value);
             if (value == -1) {
                 setQuestion(null);
@@ -162,14 +143,13 @@ public class Parser {
     private String matchedExpr(final String typeStr) {
         String str = "[\\s\\n\\t]*";
         String matche = str + "(type" + str + "=" + str + "\"" + str;
-        //\\s*(type=\"\\(\\)\")\\s*
-        if (typeStr.equals("{}")) {
+
+        if (typeStr.equals("{}"))
             matche += "\\{" + str + "\\}" + str + "\")" + str;
-        } else if (typeStr.equals("[]")) {
+        if (typeStr.equals("[]"))
             matche += "\\[" + str + "\\]" + str + "\")" + str;
-        } else if (typeStr.equals("()")) {
+        if (typeStr.equals("()"))
             matche += "\\(" + str + "\\)" + str + "\")" + str;
-        }
         return matche;
     }
 

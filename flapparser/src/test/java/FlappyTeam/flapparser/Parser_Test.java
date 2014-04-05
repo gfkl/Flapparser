@@ -136,12 +136,12 @@ public class Parser_Test {
 		assertNull(p.getQuestion());
 	}
 
-	@Test
-	public void failString_11() {
-		p.setStrToParse("{Blablabla| }et la rep");
-		p.doParser();
-		assertNull(p.getQuestion());
-	}
+//	@Test
+//	public void failString_11() {
+//		p.setStrToParse("{Blablabla| }et la rep");
+//		p.doParser();
+//		assertNull(p.getQuestion());
+//	}
 	
 	@Test
 	public	void	StringWithTabAndEnterChar() {
