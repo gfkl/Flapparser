@@ -16,7 +16,7 @@ public class Question {
     private ArrayList<Reponse> listeRep;
 
     /**
-     * Constructeur
+     *
      */
     public Question() {
         super();

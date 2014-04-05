@@ -56,21 +56,26 @@ public class Parser {
         String resQ;
         int nbChar1 = 0, nbChar2 = 0, nbChar3 = 0, posChar1, posChar2;
         for (int i = 0; i < strToParse.length(); i++) {
-        	if (strToParse.toCharArray()[i] == '{')
-        		nbChar1++;
-        	if (strToParse.toCharArray()[i] == '}')
-        		nbChar2++;
-        	if (strToParse.toCharArray()[i] == '|')
-        		nbChar3++;
+            if (strToParse.toCharArray()[i] == '{') {
+                nbChar1++;
+            }
+            if (strToParse.toCharArray()[i] == '}') {
+                nbChar2++;
+            }
+            if (strToParse.toCharArray()[i] == '|') {
+                nbChar3++;
+            }
         }
         /** Erreur à traiter au propre */
-        if (nbChar1 == 0 || nbChar2 == 0 || 
-        		nbChar1 != nbChar2 || nbChar3 != 1)
-        	return -1;
-    	posChar1 = this.getStrToParse().indexOf("{");
-    	posChar2 = this.getStrToParse().indexOf("|");
-        if (posChar2 < posChar1 + 1)
-        	return -1;
+        if (nbChar1 == 0 || nbChar2 == 0
+                || nbChar1 != nbChar2 || nbChar3 != 1) {
+            return -1;
+        }
+        posChar1 = this.getStrToParse().indexOf("{");
+        posChar2 = this.getStrToParse().indexOf("|");
+        if (posChar2 < posChar1 + 1) {
+            return -1;
+        }
         resQ = this.strToParse.substring(posChar1 + 1, posChar2);
         this.getQuestion().setQuestion(resQ);
         return (this.strToParse.indexOf("|") + 1);
@@ -87,9 +92,9 @@ public class Parser {
         temp = this.strToParse.indexOf("}");
         temp2 = this.strToParse.indexOf("}", temp + 1);
 
-        
-        if (strToParse.indexOf("type") == -1)
-        	return -1;
+        if (strToParse.indexOf("type") == -1) {
+            return -1;
+        }
         if (temp < temp2) {
             this.questionTypeStr = this.strToParse.substring(value, temp2);
             return (temp2);
@@ -151,12 +156,15 @@ public class Parser {
         String str = "[\\s\\n\\t]*";
         String matche = str + "(type" + str + "=" + str + "\"" + str;
 
-        if (typeStr.equals("{}"))
+        if (typeStr.equals("{}")) {
             matche += "\\{" + str + "\\}" + str + "\")" + str;
-        if (typeStr.equals("[]"))
+        }
+        if (typeStr.equals("[]")) {
             matche += "\\[" + str + "\\]" + str + "\")" + str;
-        if (typeStr.equals("()"))
+        }
+        if (typeStr.equals("()")) {
             matche += "\\(" + str + "\\)" + str + "\")" + str;
+        }
         return matche;
     }
 
