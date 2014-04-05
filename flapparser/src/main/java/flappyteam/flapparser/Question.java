@@ -15,16 +15,9 @@ public class Question {
     /** */
     private ArrayList<Reponse> listeRep;
 
-    /**@param questionNew la question
-     * @param typeNew le type */
-    public Question(final String questionNew, final TypeQuestion typeNew) {
-        super();
-        this.question = questionNew;
-        this.type = typeNew;
-        this.listeRep = new ArrayList<Reponse>();
-    }
-
-    /***/
+    /**
+     * Constructeur
+     */
     public Question() {
         super();
         this.question = null;
