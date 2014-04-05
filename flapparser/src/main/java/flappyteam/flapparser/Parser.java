@@ -87,6 +87,9 @@ public class Parser {
         temp = this.strToParse.indexOf("}");
         temp2 = this.strToParse.indexOf("}", temp + 1);
 
+        
+        if (strToParse.indexOf("type") == -1)
+        	return -1;
         if (temp < temp2) {
             this.questionTypeStr = this.strToParse.substring(value, temp2);
             return (temp2);
@@ -123,6 +126,10 @@ public class Parser {
                 return;
             }
             value = takeQuestionType(value);
+            if (value == -1) {
+                setQuestion(null);
+                return;
+            }
             value = takeReponseStr(value);
             if (value == -1) {
                 setQuestion(null);
