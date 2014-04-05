@@ -1,6 +1,6 @@
 package FlappyTeam.flapparser;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -43,5 +43,18 @@ public class ReponseTest {
 	public void valueIsEquals() {
 		Reponse r2 = r;
 		assertEquals(r.equals(r2), true);
+	}
+	
+	@Test
+	public void	equalsTest() {
+		assertFalse(r.equals(r.getLibele()));
+		assertFalse(r.equals(new Reponse(false, "Je ne suis pas la reponse")));
+		assertFalse(r.equals(new Reponse(true, "Je ne suis pas la reponse")));
+		assertFalse(r.equals(new Reponse(false, "Je suis la reponse")));
+	}
+	
+	@Test
+	public void	hashCodeTest() {
+		assertEquals(r.hashCode(), r.getLibele().hashCode());
 	}
 }
