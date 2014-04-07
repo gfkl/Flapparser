@@ -14,7 +14,7 @@ public class Parser_Multiple {
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Parser("{Sélectionnez les langages dynamiques |type=\"[]\"} + Clojure. - Java. + Groovy. - Scala.");
+		p = new Parser("{Selectionnez les langages dynamiques |type=\"[]\"} + Clojure. - Java. + Groovy. - Scala.");
 	}
 
 	@After
