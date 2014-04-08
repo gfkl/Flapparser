@@ -24,20 +24,26 @@ public class Multiple {
     
     public final void parser() {
         int indexDebut = 1;
-        int indexFin;
-        String tabChar[] = reponses.split(".");
-        String reponse;
+        int indexFin = 0;
+        int i = 0;
+        boolean value = false;
         
-        for (int i = 0 ; i < tabChar[i].length() ; i++) {
-        	if (tabChar[i].charAt(0) == '+') {
-        		indexFin = tabChar[i].length();
-        		reponse = tabChar[i].substring(indexDebut, indexFin);
-        		createReponse(reponse, true);
-        	} else {
-        		indexFin = tabChar[i].length();
-        		reponse = tabChar[i].substring(indexDebut, indexFin);
-        		createReponse(reponse, false);        	}
+        for (char c : reponses.toCharArray()) {
         	
+        	if (c == '+') {
+        		value = true;
+        		indexDebut = i+2;
+        	} else if (c == '-') {
+        		value = false;
+        		indexDebut = i+2;
+        	}
+
+        	if (c == '.') {
+        		indexFin = i;
+        		createReponse(reponses.substring(indexDebut, indexFin),value);
+        	}
+        	
+        	i++;
         }
 
     }
@@ -46,7 +52,7 @@ public class Multiple {
 
 		Reponse newReponse = new Reponse(value,reponse);
 		
-		getListeReponses().add(newReponse);
+		listeReponses.add(newReponse);
 		
 	}
 
