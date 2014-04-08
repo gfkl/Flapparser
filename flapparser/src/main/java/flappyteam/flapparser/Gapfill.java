@@ -8,7 +8,7 @@ public final class Gapfill {
     /**
      * Just something useless for useless rules
      */
-    private Gapfill() {
+    public Gapfill() {
     }
 
     /**
