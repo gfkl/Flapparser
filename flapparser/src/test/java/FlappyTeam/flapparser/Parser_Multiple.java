@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import flappyteam.flapparser.Multiple;
-import flappyteam.flapparser.Parser;
 import flappyteam.flapparser.Reponse;
 
 public class Parser_Multiple {
@@ -31,10 +30,10 @@ public class Parser_Multiple {
 		Reponse reponse3 = p.getListeReponses().get(2);
 		Reponse reponse4 = p.getListeReponses().get(3);
 		
-		assertTrue(reponse1.equals("Clojure"));
-		assertTrue(reponse2.equals("Java"));
-		assertTrue(reponse3.equals("Groovy"));
-		assertTrue(reponse4.equals("Scala"));
+		assertTrue(reponse1.getLibele().equals("Clojure"));
+		assertTrue(reponse2.getLibele().equals("Java"));
+		assertTrue(reponse3.getLibele().equals("Groovy"));
+		assertTrue(reponse4.getLibele().equals("Scala"));
 
 	}
 
