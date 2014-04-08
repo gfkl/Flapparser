@@ -6,15 +6,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import flappyteam.flapparser.Multiple;
 import flappyteam.flapparser.Parser;
+import flappyteam.flapparser.Reponse;
 
 public class Parser_Multiple {
 	
-	protected Parser p;
+	protected Multiple p;
 
 	@Before
 	public void setUp() throws Exception {
-		p = new Parser("{Selectionnez les langages dynamiques |type=\"[]\"} + Clojure. - Java. + Groovy. - Scala.");
+		p = new Multiple("+ Clojure. - Java. + Groovy. - Scala.");
 	}
 
 	@After
@@ -22,8 +24,18 @@ public class Parser_Multiple {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testMultiple() {
+		p.parser();
+		Reponse reponse1 = p.getListeReponses().get(0);
+		Reponse reponse2 = p.getListeReponses().get(1);
+		Reponse reponse3 = p.getListeReponses().get(2);
+		Reponse reponse4 = p.getListeReponses().get(3);
+		
+		assertTrue(reponse1.equals("Clojure"));
+		assertTrue(reponse2.equals("Java"));
+		assertTrue(reponse3.equals("Groovy"));
+		assertTrue(reponse4.equals("Scala"));
+
 	}
 
 }

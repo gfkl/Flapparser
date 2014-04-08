@@ -15,10 +15,10 @@ public class Multiple {
 	private String reponses;
 	private ArrayList<Reponse> listeReponses;
 
-    Multiple(final String rep) {
+    public Multiple(final String rep) {
     	
     	reponses = rep;
-    	listeReponses = new ArrayList<Reponse>();
+    	setListeReponses(new ArrayList<Reponse>());
 
     }
     
@@ -46,8 +46,16 @@ public class Multiple {
 
 		Reponse newReponse = new Reponse(value,reponse);
 		
-		listeReponses.add(newReponse);
+		getListeReponses().add(newReponse);
 		
+	}
+
+	public ArrayList<Reponse> getListeReponses() {
+		return listeReponses;
+	}
+
+	public void setListeReponses(ArrayList<Reponse> listeReponses) {
+		this.listeReponses = listeReponses;
 	}
 
 }
