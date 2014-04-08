@@ -6,17 +6,19 @@ import java.util.ArrayList;
 public final class Gapfill {
 
     /**
-     *
+     * Just something useless for useless rules
      */
     private Gapfill() {
     }
 
-    /** */
-    public static final int MAX_SIZE = 10;
+    /**
+     * Only used to parse the size of a response
+     */
+    public static final int DIX = 10;
 
     /**
-     * @param chaine comment here
-     * @return comment here
+     * @param chaine : the string to parse without the head
+     * @return The list of good response (because the string to parse only contains those)
      */
     public static ArrayList<Reponse> parser(final String chaine) {
         int taille = chaine.length();
@@ -46,7 +48,7 @@ public final class Gapfill {
                         break;
                     }
                     if (tableau[j] >= '0' && tableau[j] <= '9') {
-                        tailleReponse *= MAX_SIZE;
+                        tailleReponse *= DIX;
                         tailleReponse += (tableau[j] - '0');
                     }
                 }
