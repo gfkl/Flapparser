@@ -25,7 +25,7 @@ public class Simple {
      * @param reponseAParser : string a parser
      * @return : une arraylist de reponse si le string a parser est bien forme
      */
-    public final ArrayList<Reponse> doParse(final String reponseAParser) {
+    public final ArrayList<Reponse> parser(final String reponseAParser) {
         if (reponseAParser == null) {
             return null;
         }
@@ -64,13 +64,14 @@ public class Simple {
      * @return string sans caractere d'espacement avant et apres intitule
      */
     private String supprimerEspaceDebutFinLigne(final String chaine) {
-        while (chaine.substring(0, 1).equals(" ")) {
-            return chaine.substring(1);
+        String str = chaine;
+        while (str.substring(0, 1).equals(" ")) {
+            str = str.substring(1);
         }
-        while (chaine.substring(chaine.length() - 1).equals(" ")) {
-            return chaine.substring(0, chaine.length() - 2);
+        while (str.substring(str.length() - 1).equals(" ")) {
+            str = str.substring(0, str.length() - 2);
         }
-        return chaine;
+        return str;
     }
 
     /**
