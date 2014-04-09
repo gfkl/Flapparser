@@ -1,32 +1,32 @@
-package FlappyTeam.flapparser;
+package flappyteam.flapparser;
 
 import java.util.ArrayList;
 
 /**
- * 
+ *
  * @author Damien
  *
  */
 public class Simple {
-	
-	private String reponse ;
-	private ArrayList<Reponse> listReponse ;
-	
+
+	private String reponse;
+	private ArrayList<Reponse> listReponse;
+
 	public Simple(){
-		reponse = null ;
+		reponse = null;
 		listReponse = new ArrayList<Reponse>();
 	}
-	
+
 	/**
-	 * 
-	 * @param reponseAParser : string a parser 
+	 *
+	 * @param reponseAParser : string a parser
 	 * @return : une arraylist de reponse si le string a parser est bien forme
 	 */
 	public ArrayList<Reponse> doParse(String reponseAParser){
 		if(reponseAParser==null){
-			return null ;
+			return null;
 		}
-		reponse = reponseAParser ;
+		reponse = reponseAParser;
 		if (reponse.matches("([\\s]*[\\+-][\\s\\w]+\\.)+")){
 			while(!(reponse.isEmpty())){
 				convertChaineToReponse(reponse.substring(0, reponse.indexOf(".")));
@@ -36,30 +36,27 @@ public class Simple {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * 
-	 * @param chaine : contient un string contenant une reponse a transformer 
+	 *
+	 * @param chaine : contient un string contenant une reponse a transformer
 	 * ajoute la reponse a notre arrayList
 	 */
 	private void convertChaineToReponse(String chaine){
 		if(chaine.contains("+")){
-			String simpleReponse = chaine.substring(chaine.indexOf("+")+1) ;
+			String simpleReponse = chaine.substring(chaine.indexOf("+")+1);
 			simpleReponse = supprimerEspaceDebutFinLigne(simpleReponse);
 			listReponse.add(new Reponse(true,simpleReponse));
-			
 		}
 		else{
-			String simpleReponse = chaine.substring(chaine.indexOf("-")+1) ;
+			String simpleReponse = chaine.substring(chaine.indexOf("-")+1);
 			simpleReponse = supprimerEspaceDebutFinLigne(simpleReponse);
 			listReponse.add(new Reponse(false,simpleReponse));
-			
 		}
-		
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param chaine : chaine de caractere ou l'on veut supprimer les eventuels espaces en trop
 	 * @return un string sans caractere d'espacement avant et apres intitule de la reponse
 	 */
@@ -70,11 +67,10 @@ public class Simple {
 		while(chaine.substring(chaine.length()-1).equals(" ")){
 			chaine = chaine.substring(0, chaine.length()-2);
 		}
-		return chaine ;
+		return chaine;
 	}
-	
-	
+
 	public ArrayList<Reponse> getListReponse(){
-		return listReponse ;
+		return listReponse;
 	}
 }
