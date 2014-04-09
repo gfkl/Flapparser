@@ -16,20 +16,16 @@ import flappyteam.flapparser.Simple;
 public class Parser_Simple {
 	
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
-	public void testDoParseNull(){
+	public void testparserNull(){
 		Simple simpleReponse = new Simple();
-		assertEquals(simpleReponse.doParse(null), null);
+		assertEquals(simpleReponse.parser(null), null);
 	}
 	
 	@Test
-	public void testDoParseGoodFormatSize1TrueFormat(){
+	public void testparserGoodFormatSize1TrueFormat(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("+ma reponse true.") ;
+		simpleReponse.parser("+ma reponse true.") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(),1 );
 		assertEquals(listReponse.get(0).isValue(),true);
@@ -38,9 +34,9 @@ public class Parser_Simple {
 	}
 
 	@Test
-	public void testDoParseGoodFormatSize1FalseFormat(){
+	public void testparserGoodFormatSize1FalseFormat(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("-ma reponse false.") ;
+		simpleReponse.parser("-ma reponse false.") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(),1 );
 		assertEquals(listReponse.get(0).isValue(),false);
@@ -49,18 +45,18 @@ public class Parser_Simple {
 	}
 	
 	@Test
-	public void testDoParseWrongFormatSize1(){
+	public void testparserWrongFormatSize1(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("ma reponse .");
+		simpleReponse.parser("ma reponse .");
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(),0);
 		assertTrue( listReponse.isEmpty());
 	}
 	
 	@Test
-	public void testDoParseWrongFormatSizeN(){
+	public void testparserWrongFormatSizeN(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("+ The correct answer.- Distractor1.  Distractor3.+   The cor   rect answer. - Distractor 8.") ;
+		simpleReponse.parser("+ The correct answer.- Distractor1.  Distractor3.+   The cor   rect answer. - Distractor 8.") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(),0);
 		assertTrue(listReponse.isEmpty());
@@ -69,16 +65,16 @@ public class Parser_Simple {
 	@Test
 	public void testSizeOfLibeleTrue(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("+ma reponse 1        .") ;
+		simpleReponse.parser("+ma reponse 1        .") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.get(0).getLibele(),"ma reponse 1");
 		
 	}
 	
 	@Test
-	public void testDoParseGoodFormatSize2(){
+	public void testparserGoodFormatSize2(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("-ma reponse 1.+ La reponse 2.") ;
+		simpleReponse.parser("-ma reponse 1.+ La reponse 2.") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(),2 );
 		assertEquals(listReponse.get(0).isValue(),false);
@@ -88,9 +84,9 @@ public class Parser_Simple {
 	}
 	
 	@Test
-	public void testDoParseSizeN(){
+	public void testparserSizeN(){
 		Simple simpleReponse = new Simple();
-		simpleReponse.doParse("+ The correct answer.- Distractor1. - Distractor3.+   The cor   rect answer. - Distractor 8.") ;
+		simpleReponse.parser("+ The correct answer.- Distractor1. - Distractor3.+   The cor   rect answer. - Distractor 8.") ;
 		java.util.ArrayList<Reponse> listReponse = simpleReponse.getListReponse();
 		assertEquals(listReponse.size(), 5);
 		assertEquals(listReponse.get(0),new Reponse(true, "The correct answer"));
