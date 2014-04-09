@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import flappyteam.flapparser.Reponse;
+import flappyteam.flapparser.Simple;
+
 /**
  * 
  * @author Damien
