@@ -63,12 +63,12 @@ public class Simple {
      * @param chaine : chaine de caractere avec espaces en trop
      * @return string sans caractere d'espacement avant et apres intitule
      */
-    private String supprimerEspaceDebutFinLigne(String chaine) {
+    private String supprimerEspaceDebutFinLigne(final String chaine) {
         while (chaine.substring(0, 1).equals(" ")) {
-            chaine = chaine.substring(1);
+            return chaine.substring(1);
         }
         while (chaine.substring(chaine.length() - 1).equals(" ")) {
-            chaine = chaine.substring(0, chaine.length() - 2);
+            return chaine.substring(0, chaine.length() - 2);
         }
         return chaine;
     }
