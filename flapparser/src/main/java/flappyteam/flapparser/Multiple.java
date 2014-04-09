@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 /**
  * @author Cédric
- *
  */
+
 public class Multiple {
 
 
