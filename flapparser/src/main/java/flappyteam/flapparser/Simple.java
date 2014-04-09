@@ -26,14 +26,15 @@ public class Simple {
      * @return : une arraylist de reponse si le string a parser est bien forme
      */
     public ArrayList<Reponse> doParse(String reponseAParser) {
-        if (reponseAParser==null) {
+        if (reponseAParser == null) {
             return null;
         }
         reponse = reponseAParser;
         if (reponse.matches("([\\s]*[\\+-][\\s\\w]+\\.)+")) {
             while (!(reponse.isEmpty())) {
-                convertChaineToReponse(reponse.substring(0, reponse.indexOf(".")));
-                reponse = reponse.substring(reponse.indexOf(".")+1);
+                convertChaineToReponse(
+                        reponse.substring(0, reponse.indexOf(".")));
+                reponse = reponse.substring(reponse.indexOf(".") + 1);
             }
             return listReponse;
         }
@@ -49,7 +50,7 @@ public class Simple {
         if (chaine.contains("+")) {
             String simpleReponse = chaine.substring(chaine.indexOf("+") + 1);
             simpleReponse = supprimerEspaceDebutFinLigne(simpleReponse);
-            listReponse.add(new Reponse(true,simpleReponse));
+            listReponse.add(new Reponse(true, simpleReponse)); 
         }
         else {
             String simpleReponse = chaine.substring(chaine.indexOf("-") + 1);
@@ -61,7 +62,7 @@ public class Simple {
     /**
      *
      * @param chaine : chaine de caractere avec espaces en trop
-     * @return string sans caractere d'espacement avant et apres intitule 
+     * @return string sans caractere d'espacement avant et apres intitule
      */
     private String supprimerEspaceDebutFinLigne(String chaine) {
         while (chaine.substring(0, 1).equals(" ")) {
@@ -74,7 +75,7 @@ public class Simple {
     }
 
     /**
-     * @return listReponse : ArrayList contenant toutes les objets Reponse a la question
+     * @return listReponse : ArrayList des objets Reponse a la question
      */
     public ArrayList<Reponse> getListReponse() {
         return listReponse;
