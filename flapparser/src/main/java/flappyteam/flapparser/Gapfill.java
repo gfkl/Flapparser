@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public final class Gapfill {
 
     /**
-     * Just something useless for useless rules
+     * Just something useless for useless rules.
      */
     public Gapfill() {
     }
@@ -16,18 +16,19 @@ public final class Gapfill {
      * @param responsePart a char we need to add to the response
      * @return the augmented response
      */
-    private static final String createReponse(String response, char responsePart){
+    private static String createReponse(final String response,
+           final char responsePart) {
         return response + responsePart;
     }
-    
+
     /**
-     * Only used to parse the size of a response
+     * Only used to parse the size of a response.
      */
     public static final int DIX = 10;
 
     /**
      * @param chaine : the string to parse without the head
-     * @return The list of good response (because the string to parse only contains those)
+     * @return The list of good response (string to parse only contains those)
      */
     public static ArrayList<Reponse> parser(final String chaine) {
         int taille = chaine.length();

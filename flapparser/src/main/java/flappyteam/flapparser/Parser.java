@@ -16,7 +16,7 @@ public class Parser {
     private String strToParse;
 
     /**@author Houpert
-     * @param strToParseNew ,la chaine de charactère a parser*/
+     * @param strToParseNew ,la chaine de charactÃ¨re a parser*/
     public Parser(final String strToParseNew) {
         this.question = new Question();
         this.questionTypeStr = null;
@@ -66,7 +66,7 @@ public class Parser {
                 nbChar3++;
             }
         }
-        /** Erreur à traiter au propre */
+        /** Erreur Ã  traiter au propre */
         if (nbChar1 == 0 || nbChar2 == 0
                 || nbChar1 != nbChar2 || nbChar3 != 1) {
             return -1;
@@ -83,7 +83,7 @@ public class Parser {
 
     /**
      *@author Houpert
-     *@param value ,l'emplacement séparateur question/type '|'
+     *@param value ,l'emplacement sÃ©parateur question/type '|'
      *@return la chaine de type
      **/
     private int takeQuestionType(final int value) {
@@ -107,7 +107,7 @@ public class Parser {
     /**
      *@author Houpert
      *
-     *@param value ,l'emplacement séparateur question-type/reponse '}'
+     *@param value ,l'emplacement sÃ©parateur question-type/reponse '}'
      *
      *@return la chaine de reponse
      **/
@@ -150,7 +150,7 @@ public class Parser {
     /**
      *@author Houpert
      *@param typeStr ,permet de generer la bonne expression reguliere
-     *@return l'expression régulière complete pour le type
+     *@return l'expression rÃ©guliÃ¨re complete pour le type
      **/
     private String matchedExpr(final String typeStr) {
         String str = "[\\s\\n\\t]*";
@@ -179,17 +179,18 @@ public class Parser {
                 this.question.setListeRep(bq.parser());
             } else {
                 this.getQuestion().setType(TypeQuestion.simple);
-                //this.question.setListeRep(parserDamien(rep));
-                System.out.println("Parser Damien");
+                Simple simpleReponse = new Simple();
+                simpleReponse.parser(this.responseStr);
+                this.question.setListeRep(simpleReponse.getListReponse());
             }
         } else if (this.questionTypeStr.matches(matchedExpr("[]"))) {
             this.getQuestion().setType(TypeQuestion.multiple);
-            //this.question.setListeRep(parserCedric(rep));
-            System.out.println("Parser Cedric");
+            Multiple p = new Multiple(this.responseStr);
+            p.parser();
+            this.question.setListeRep(p.getListeReponses());
         } else if (this.questionTypeStr.matches(matchedExpr("{}"))) {
             this.getQuestion().setType(TypeQuestion.gapfill);
             this.question.setListeRep(Gapfill.parser(responseStr));
-            System.out.println("Parser Dax");
         } else {
             return;
         }
