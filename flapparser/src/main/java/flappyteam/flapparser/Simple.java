@@ -9,9 +9,12 @@ import java.util.ArrayList;
  */
 public class Simple {
 
+	/** */
 	private String reponse;
+	/** */
 	private ArrayList<Reponse> listReponse;
 
+	/** */
 	public Simple(){
 		reponse = null;
 		listReponse = new ArrayList<Reponse>();
