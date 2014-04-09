@@ -28,10 +28,6 @@ public class ParserMultiple {
         p = new Multiple("+ Clojure. - Java. + Groovy. - Scala.");
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
-
     @Test
     public void testMultiple() {
         p.parser();
