@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ Gapfill_Test.class, Parser_BooleanQuestion.class,
-		Parser_Simple.class, Parser_Test.class, ParserMultiple.class,
+		Simple_Test.class, Parser_Test.class, Multiple_Test.class,
 		ReponseTest.class })
 public class AllTests {
 
