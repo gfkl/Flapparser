@@ -12,6 +12,15 @@ public final class Gapfill {
     }
 
     /**
+     * @param response the response partially completed
+     * @param responsePart a char we need to add to the response
+     * @return the augmented response
+     */
+    private static final String createReponse(String response, char responsePart){
+        return response + responsePart;
+    }
+    
+    /**
      * Only used to parse the size of a response
      */
     public static final int DIX = 10;
@@ -41,7 +50,7 @@ public final class Gapfill {
                     if (tableau[j] == ' ' || tableau[j] == '_') {
                         break;
                     }
-                    reponse += tableau[j];
+                    reponse = createReponse(reponse, tableau[j]);
                 }
                 for (j++; j < taille; j++) {
                     if (tableau[j] == '}') {
@@ -52,7 +61,7 @@ public final class Gapfill {
                         tailleReponse += (tableau[j] - '0');
                     }
                 }
-                if (tailleReponse == reponse.length()) {
+                if (tailleReponse >= reponse.length()) {
                     //pas d'erreur
                     liste.add(new Reponse(true, reponse));
                     i = j;

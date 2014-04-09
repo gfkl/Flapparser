@@ -188,7 +188,7 @@ public class Parser {
             System.out.println("Parser Cedric");
         } else if (this.questionTypeStr.matches(matchedExpr("{}"))) {
             this.getQuestion().setType(TypeQuestion.gapfill);
-            //this.question.setListeRep(Gapfill.parser(rep));
+            this.question.setListeRep(Gapfill.parser(responseStr));
             System.out.println("Parser Dax");
         } else {
             return;
