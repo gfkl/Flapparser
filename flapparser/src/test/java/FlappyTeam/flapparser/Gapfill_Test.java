@@ -18,6 +18,13 @@ public class Gapfill_Test {
     @Test
     public void testParser() {
         assertEquals(Gapfill.parser("").size(), 0);
+        assertEquals(Gapfill.parser("{").size(), 0);
+        assertEquals(Gapfill.parser("{ ").size(), 0);
+        assertEquals(Gapfill.parser("{ a").size(), 0);
+        assertEquals(Gapfill.parser("{ a _").size(), 0);
+        assertEquals(Gapfill.parser("{ a _}").size(), 0);
+        assertEquals(Gapfill.parser("{ a }").size(), 0);
+
         assertEquals(Gapfill.parser("octopus {teeth_5}").size(), 1);
         assertEquals(Gapfill.parser("octopus {teeth _5}").size(), 1);
         assertEquals(Gapfill.parser("octopus { teeth _5}").size(), 1);

@@ -61,7 +61,7 @@ public final class Gapfill {
                         tailleReponse += (tableau[j] - '0');
                     }
                 }
-                if (tailleReponse >= reponse.length()) {
+                if (tailleReponse >= reponse.length() && reponse != "") {
                     //pas d'erreur
                     liste.add(new Reponse(true, reponse));
                     i = j;
