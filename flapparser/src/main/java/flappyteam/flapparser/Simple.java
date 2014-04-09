@@ -25,7 +25,7 @@ public class Simple {
      * @param reponseAParser : string a parser
      * @return : une arraylist de reponse si le string a parser est bien forme
      */
-    public ArrayList<Reponse> doParse(String reponseAParser) {
+    public final ArrayList<Reponse> doParse(final String reponseAParser) {
         if (reponseAParser == null) {
             return null;
         }
@@ -46,13 +46,12 @@ public class Simple {
      * @param chaine : contient un string contenant une reponse a transformer
      * ajoute la reponse a notre arrayList
      */
-    private void convertChaineToReponse(String chaine) {
+    private void convertChaineToReponse(final String chaine) {
         if (chaine.contains("+")) {
             String simpleReponse = chaine.substring(chaine.indexOf("+") + 1);
             simpleReponse = supprimerEspaceDebutFinLigne(simpleReponse);
-            listReponse.add(new Reponse(true, simpleReponse)); 
-        }
-        else {
+            listReponse.add(new Reponse(true, simpleReponse));
+            } else {
             String simpleReponse = chaine.substring(chaine.indexOf("-") + 1);
             simpleReponse = supprimerEspaceDebutFinLigne(simpleReponse);
             listReponse.add(new Reponse(false, simpleReponse));
@@ -77,7 +76,7 @@ public class Simple {
     /**
      * @return listReponse : ArrayList des objets Reponse a la question
      */
-    public ArrayList<Reponse> getListReponse() {
+    public final ArrayList<Reponse> getListReponse() {
         return listReponse;
     }
 }
